@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isFalling;
 
+    // LEVEL 2 - PART 1 - TRAPS
+    private float currentHealth;
+    private float maxHealth;
+
     private void Awake()
     {
         // Part 1 - Movement
@@ -21,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Part 3 - Animation
         anim = GetComponent<Animator>();
+
+        // LEVEL 2 - PART 1 - TRAPS
+        currentHealth = maxHealth;
     }
 
     private void Update()
@@ -86,4 +93,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // LEVEL 2 - PART 1 - TRAPS
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        if(currentHealth <= 0)
+        {
+            Debug.Log("DEAD");
+        }
+    }
 }
